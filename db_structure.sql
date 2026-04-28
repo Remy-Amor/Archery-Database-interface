@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: ictstu-db1.cc.swin.edu.au
--- Generation Time: Apr 28, 2026 at 12:32 PM
+-- Generation Time: Apr 28, 2026 at 12:51 PM
 -- Server version: 5.5.68-MariaDB
 -- PHP Version: 7.3.33
 
@@ -223,25 +223,6 @@ CREATE TABLE `round_ranges` (
   `rangeSequence` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `score_staging`
---
-
-DROP TABLE IF EXISTS `score_staging`;
-CREATE TABLE `score_staging` (
-  `stagingID` int(11) NOT NULL,
-  `archerID` varchar(20) NOT NULL,
-  `roundID` int(11) NOT NULL,
-  `divisionID` varchar(10) NOT NULL,
-  `scoreDate` date NOT NULL,
-  `scoreTime` time NOT NULL,
-  `submittedDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` enum('Pending','Approved','Rejected') DEFAULT 'Pending',
-  `notes` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Indexes for dumped tables
 --
@@ -336,15 +317,6 @@ ALTER TABLE `round_ranges`
   ADD KEY `rangeID` (`rangeID`);
 
 --
--- Indexes for table `score_staging`
---
-ALTER TABLE `score_staging`
-  ADD PRIMARY KEY (`stagingID`),
-  ADD KEY `archerID` (`archerID`),
-  ADD KEY `roundID` (`roundID`),
-  ADD KEY `divisionID` (`divisionID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -397,12 +369,6 @@ ALTER TABLE `rounds`
   MODIFY `roundID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `score_staging`
---
-ALTER TABLE `score_staging`
-  MODIFY `stagingID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -452,14 +418,6 @@ ALTER TABLE `range_ends`
 ALTER TABLE `round_ranges`
   ADD CONSTRAINT `round_ranges_ibfk_1` FOREIGN KEY (`roundID`) REFERENCES `rounds` (`roundID`),
   ADD CONSTRAINT `round_ranges_ibfk_2` FOREIGN KEY (`rangeID`) REFERENCES `ranges` (`rangeID`);
-
---
--- Constraints for table `score_staging`
---
-ALTER TABLE `score_staging`
-  ADD CONSTRAINT `score_staging_ibfk_1` FOREIGN KEY (`archerID`) REFERENCES `archers` (`archeryAustraliaID`),
-  ADD CONSTRAINT `score_staging_ibfk_2` FOREIGN KEY (`roundID`) REFERENCES `rounds` (`roundID`),
-  ADD CONSTRAINT `score_staging_ibfk_3` FOREIGN KEY (`divisionID`) REFERENCES `divisions` (`divisionID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
