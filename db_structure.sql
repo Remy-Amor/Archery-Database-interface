@@ -34,8 +34,43 @@ CREATE TABLE `archers` (
   `lastName` varchar(100) NOT NULL,
   `dateOfBirth` date NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
-  `defaultDivision` enum('B, C, R, L') NOT NULL
+  `defaultDivision` enum('B','C','R','L') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `archers`
+--
+
+INSERT INTO `archers` (`archeryAustraliaID`, `firstName`, `lastName`, `dateOfBirth`, `gender`, `defaultDivision`) VALUES
+('AA001', 'Spike', 'Gronw', '1998-04-12', 'Male', 'R'),
+('AA002', 'Bridget', 'Toner', '2001-09-03', 'Female', 'C'),
+('AA003', 'Lelia', 'Pringour', '2003-06-21', 'Female', 'R'),
+('AA004', 'Jarred', 'Dorbin', '1995-11-15', 'Male', 'C'),
+('AA005', 'Sherrie', 'Charlet', '1988-02-09', 'Female', 'B'),
+('AA006', 'Dyanna', 'Hehnke', '1990-07-30', 'Female', 'R'),
+('AA007', 'Wolfgang', 'Noore', '1985-01-18', 'Male', 'L'),
+('AA008', 'Brandon', 'Guerin', '1999-12-05', 'Male', 'R'),
+('AA009', 'Clareta', 'Barnsdall', '2004-03-27', 'Female', 'C'),
+('AA010', 'Cherida', 'Veque', '1997-08-14', 'Female', 'R'),
+('AA011', 'Tannie', 'Dunniom', '2002-05-19', 'Male', 'B'),
+('AA012', 'Demetris', 'McNeil', '1996-10-22', 'Male', 'C'),
+('AA013', 'Martie', 'Lumsdaine', '2000-06-11', 'Female', 'R'),
+('AA014', 'Brocky', 'Gogay', '1993-03-08', 'Male', 'L'),
+('AA015', 'Adolph', 'Frodsham', '1987-12-29', 'Male', 'C');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `archers`
+--
+ALTER TABLE `archers`
+  ADD PRIMARY KEY (`archeryAustraliaID`),
+  ADD KEY `idx_archer_name` (`lastName`,`firstName`),
+  ADD KEY `idx_archer_dob` (`dateOfBirth`);
+COMMIT;
+
 
 -- --------------------------------------------------------
 
