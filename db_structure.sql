@@ -343,7 +343,39 @@ ALTER TABLE `range_ends`
 --
 ALTER TABLE `rounds`
   ADD PRIMARY KEY (`roundID`);
+INSERT INTO `rounds` (`roundID`, `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
+(1, 'WA90/1440', 144, 1440, '2025-10-01', NULL),
+(2, 'WA70/1440', 144, 1440, '0000-00-00', NULL),
+(3, 'WA720', 72, 720, '2025-01-02', NULL),
+(4, 'WA900', 90, 900, '0000-00-00', NULL),
+(5, 'Canberra Round', 144, 1440, '2025-04-03', NULL),
+(6, 'Short Canberra Round', 72, 720, '0000-00-00', NULL),
+(7, 'Sydney Round', 144, 1440, '0000-00-00', NULL),
+(8, 'Short Sydney Round', 72, 720, '0000-00-00', NULL),
+(9, 'Adelaide Round', 90, 900, '2025-08-05', NULL),
+(10, 'Brisbane Round', 72, 720, '2025-01-06', NULL),
+(11, 'Melbourne Round', 144, 1440, '2025-10-08', NULL),
+(12, 'Perth Round', 90, 900, '2025-12-09', NULL);
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `rounds`
+--
+ALTER TABLE `rounds`
+  ADD PRIMARY KEY (`roundID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `rounds`
+--
+ALTER TABLE `rounds`
+  MODIFY `roundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+COMMIT;
 --
 -- Indexes for table `round_ranges`
 --
