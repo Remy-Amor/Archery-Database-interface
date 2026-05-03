@@ -188,6 +188,27 @@ CREATE TABLE `individual_recorded_rounds` (
   `notes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Insert data for table `individual_recorded_rounds`
+--
+
+INSERT INTO `individual_recorded_rounds` (`recordedRoundID`, `archerID`, `roundID`, `dateCompleted`, `totalScore`, `status`, `notes`) VALUES
+(1, 'AA001', 1, '2025-10-15', 1400, 'Approved', 'Great performance!'),
+(2, 'AA002', 2, '2025-11-20', 1350, 'Approved', 'Well done!'),
+(3, 'AA003', 3, '2025-12-05', 680, 'Pending', ''),
+(4, 'AA004', 4, '2025-10-30', 850, 'Rejected', 'Score does not meet criteria.'),
+(5, 'AA005', 5, '2025-11-10', 1420, 'Approved', ''),
+(6, 'AA006', 6, '2025-12-01', 700, 'Pending', ''),
+(7, 'AA007', 7, '2025-10-25', 880, 'Approved', ''),
+(8, 'AA008', 1, '2025-11-15', 1380, 'Approved', ''),
+(9, 'AA009', 2, '2025-12-10', 1320, 'Pending', ''),
+(10, 'AA010', 3, '2025-10-20', 690, 'Rejected', 'Score does not meet criteria.'),
+(11, 'AA011', 4, '2025-11-05', 860, 'Approved', ''),
+(12, 'AA012', 5, '2025-12-15', 1410, 'Approved', ''),
+(13, 'AA013', 6, '2025-10-28', 720, 'Pending', ''),
+(14, 'AA014', 7, '2025-11-18', 890, 'Approved', ''),
+(15, 'AA015', 1, '2025-12-20', 1390, 'Approved', '');
+
 -- --------------------------------------------------------
 
 --
@@ -214,6 +235,19 @@ CREATE TABLE `ranges` (
   `endCount` int(11) NOT NULL,
   `targetFace` enum('80','122') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Insert data for table `ranges`
+--
+
+INSERT INTO `ranges` (`rangeID`, `distance`, `endCount`, `targetFace`) VALUES
+(1, '20', 6, '80'),
+(2, '30', 6, '80'),
+(3, '40', 6, '122'),
+(4, '50', 6, '122'),
+(5, '60', 6, '122'),
+(6, '70', 6, '122'),
+(7, '90', 6, '122');
 
 -- --------------------------------------------------------
 
