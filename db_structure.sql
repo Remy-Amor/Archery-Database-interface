@@ -481,13 +481,7 @@ INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `archers`
---
-ALTER TABLE `archers`
-  ADD PRIMARY KEY (`archeryAustraliaID`),
-  ADD KEY `idx_archer_name` (`lastName`,`firstName`),
-  ADD KEY `idx_archer_dob` (`dateOfBirth`);
+
 
 --
 -- Indexes for table `classes`
