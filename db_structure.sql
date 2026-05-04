@@ -284,52 +284,8 @@ CREATE TABLE `individual_round_ranges` (
 -- Insert data for table `individual_round_ranges`
 --
 
-INSERT INTO `individual_round_ranges` (`recordedRoundID`, `recordedRangeID`, `rangePositionNumber`) VALUES
-(1, 1, 1),
-(1, 2, 2),
-(1, 3, 3),
-(2, 1, 1),
-(2, 2, 2),
-(2, 3, 3),
-(3, 3, 1),
-(3, 1, 2),
-(3, 2, 3),
-(4, 1, 1),
-(4, 2, 2),
-(4, 3, 3),
-(5, 1, 1),
-(5, 2, 2),
-(5, 3, 3),
-(6, 1, 1),
-(6, 2, 2),
-(6, 3, 3),
-(7, 1, 1),
-(7, 2, 2),
-(7, 3, 3),
-(8, 1, 1),
-(8, 2, 2),
-(8, 3, 3),
-(9, 1, 1),
-(9, 2, 2),
-(9, 3, 3),
-(10, 1, 1),
-(10, 2, 2),
-(10, 3, 3),
-(11, 1, 1),
-(11, 2, 2),
-(11, 3, 3),
-(12, 1, 1),
-(12, 2, 2),
-(12, 3, 3),
-(13, 1, 1),
-(13, 2, 2),
-(13, 3, 3),
-(14, 1, 1),
-(14, 2, 2),
-(14, 3, 3),
-(15, 1, 1),
-(15, 2, 2),
-(15, 3, 3);
+--INSERT INTO `individual_round_ranges` (`recordedRoundID`, `recordedRangeID`, `rangePositionNumber`) VALUES
+
 
 -- --------------------------------------------------------
 
