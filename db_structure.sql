@@ -125,7 +125,20 @@ CREATE TABLE `competitions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `competitions` (`competitionID`, `competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`) VALUES
+(1, 'WA90 Open Championship', '2025-01-05', 'Melbourne Archery Club', 1, 'MOPEN'),
+(2, 'WA70 Open Championship', '2025-01-12', 'Melbourne Archery Club', 2, 'FOPEN'),
+(3, 'WA60 Invitational', '2025-01-20', 'Melbourne Archery Club', 3, 'MU21'),
+(4, 'AA50 Championship', '2025-02-01', 'Melbourne Archery Club', 4, 'FU21'),
+(5, 'AA40 Classic', '2025-02-10', 'Melbourne Archery Club', 5, 'M50+'),
+(6, 'Long Sydney Tournament', '2025-02-25', 'Melbourne Archery Club', 6, 'F50+'),
+(7, 'Sydney Open', '2025-03-05', 'Melbourne Archery Club', 7, 'M60+'),
+(8, 'Long Brisbane Challenge', '2025-03-20', 'Melbourne Archery Club', 8, 'F60+'),
+(9, 'Brisbane Ranking Event', '2025-04-01', 'Melbourne Archery Club', 9, 'M70+'),
+(10, 'Adelaide Cup', '2025-04-15', 'Melbourne Archery Club', 10, 'F70+'),
+(11, 'Short Adelaide Shoot', '2025-05-01', 'Melbourne Archery Club', 11, 'MU18'),
+(12, 'Hobart Junior Event', '2025-05-20', 'Melbourne Archery Club', 12, 'FU18'),
+(13, 'Perth Championship', '2025-06-05', 'Melbourne Archery Club', 13, 'MU16');
 --
 -- Table structure for table `competitions_entry`
 --
@@ -141,7 +154,22 @@ CREATE TABLE `competitions_entry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `competitions_entry` (`entryID`, `archerID`, `competitionID`, `totalScore`, `status`, `notes`) VALUES
+(1, 'AA001', 1, 1320, 'Approved', 'Strong finish'),
+(2, 'AA002', 2, 1285, 'Approved', 'Great Consistency'),
+(3, 'AA003', 3, 1340, 'Approved', 'Strong finish'),
+(4, 'AA004', 4, 1295, 'Approved', 'Great start'),
+(5, 'AA005', 5, 1250, 'Approved', 'Solid performance'),
+(6, 'AA006', 6, 1310, 'Approved', 'Personal record'),
+(7, 'AA007', 7, 870, 'Pending', 'Waiting for score confirmation'),
+(8, 'AA008', 8, 1335, 'Approved', 'Quite consistent'),
+(9, 'AA009', 9, 860, 'Approved', 'Consistant'),
+(10, 'AA010', 10, 845, 'Approved', 'Great Performance'),
+(11, 'AA011', 11, 690, 'Pending', 'Waiting for score confirmation'),
+(12, 'AA012', 12, 710, 'Approved', 'Great performance'),
+(13, 'AA013', 13, 880, 'Approved', 'Strong finish'),
+(14, 'AA014', 1, 1290, 'Approved', 'Consistant'),
+(15, 'AA015', 2, 1265, 'Approved', 'Stong finish');
 --
 -- Table structure for table `competition_round_ranges`
 --
@@ -154,7 +182,22 @@ CREATE TABLE `competition_round_ranges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `competition_round_ranges` (`entryID`, `recordedRangeID`, `rangePositionNumber`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 15, 1);
 --
 -- Table structure for table `ends`
 --
@@ -172,7 +215,22 @@ CREATE TABLE `ends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `ends` (`endID`, `arrow1`, `arrow2`, `arrow3`, `arrow4`, `arrow5`, `arrow6`, `bullseyeCount`) VALUES
+(1, 8, 8, 9, 9, 10, 10, 2),
+(2, 10, 7, 9, 8, 8, 9, 1),
+(3, 9, 9, 8, 10, 10, 10, 3),
+(4, 9, 9, 8, 8, 7, 7, 0),
+(5, 10, 10, 9, 8, 8, 8, 2),
+(6, 9, 9, 9, 8, 7, 6, 0),
+(7, 10, 10, 10, 10, 9, 8, 4),
+(8, 8, 8, 8, 7, 7, 6, 0),
+(9, 10, 9, 9, 9, 8, 8, 1),
+(10, 10, 10, 9, 9, 9, 9, 2),
+(11, 9, 8, 8, 8, 7, 7, 0),
+(12, 10, 10, 10, 9, 8, 8, 3),
+(13, 7, 9, 8, 8, 8, 9, 0),
+(14, 10, 9, 9, 8, 8, 8, 1),
+(15, 7, 8, 9, 9, 10, 10, 2);
 --
 -- Table structure for table `individual_recorded_rounds`
 --
@@ -352,7 +410,20 @@ CREATE TABLE `rounds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `rounds` (`roundID`, `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
+(1, 'WA90/1440', 144, 1440, '2025-01-01', NULL),
+(2, 'WA70/1440', 144, 1440, '2025-01-01', NULL),
+(3, 'WA60/1440', 144, 1440, '2025-01-01', NULL),
+(4, 'AA50/1440', 144, 1440, '2025-01-01', NULL),
+(5, 'AA40/1440', 144, 1440, '2025-01-01', NULL),
+(6, 'Long Sydney', 120, 1200, '2025-01-01', NULL),
+(7, 'Sydney', 120, 1200, '2025-01-01', NULL),
+(8, 'Long Brisbane', 120, 1200, '2025-01-01', NULL),
+(9, 'Brisbane', 120, 1200, '2025-01-01', NULL),
+(10, 'Adelaide', 120, 1200, '2025-01-01', NULL),
+(11, 'Short Adelaide', 120, 1200, '2025-01-01', NULL),
+(12, 'Hobart', 90, 900, '2025-01-01', NULL),
+(13, 'Perth', 90, 900, '2025-01-01', NULL);
 --
 -- Table structure for table `round_ranges`
 --
