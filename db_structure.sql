@@ -199,15 +199,15 @@ INSERT INTO `individual_recorded_rounds` (`recordedRoundID`, `archerID`, `roundI
 (4, 'AA004', 4, '2025-10-30', 850, 'Rejected', 'Score does not meet criteria.'),
 (5, 'AA005', 5, '2025-11-10', 1420, 'Approved', 'Excellent shot placement.'),
 (6, 'AA006', 6, '2025-12-01', 700, 'Pending', 'Awaiting further evaluation.'),
-(7, 'AA007', 7, '2025-10-25', 880, 'Approved', 'Consistent performance.'),
-(8, 'AA008', 1, '2025-11-15', 1380, 'Approved', 'Strong start to the season.'),
-(9, 'AA009', 2, '2025-12-10', 1320, 'Pending', 'Needs improvement.'),
-(10, 'AA010', 3, '2025-10-20', 690, 'Rejected', 'Score does not meet criteria.'),
-(11, 'AA011', 4, '2025-11-05', 860, 'Approved', 'Good performance.'),
-(12, 'AA012', 5, '2025-12-15', 1410, 'Approved', 'Outstanding performance.'),
-(13, 'AA013', 6, '2025-10-28', 720, 'Pending', 'Awaiting further evaluation.'),
-(14, 'AA014', 7, '2025-11-18', 890, 'Approved', 'Consistent performance.'),
-(15, 'AA015', 1, '2025-12-20', 1390, 'Approved', 'Excellent performance.');
+(7, 'AA007', 7, '2025-10-25', 880, 'Approved', 'Strong start but needs improvement.'),
+(8, 'AA008', 8, '2025-11-15', 640, 'Approved', 'Strong start to the season.'),
+(9, 'AA009', 9, '2025-12-10', 750, 'Pending', 'Awaiting score finalization.'),
+(10, 'AA010', 10, '2025-10-20', 480, 'Pending', 'Needs improvement.'),
+(11, 'AA011', 11, '2025-11-05', 860, 'Approved', 'Decent performance.'),
+(12, 'AA012', 12, '2025-12-15', 600, 'Approved', 'Decent performance.'),
+(13, 'AA013', 1, '2025-10-28', 1200, 'Pending', 'Awaiting further evaluation.'),
+(14, 'AA014', 2, '2025-11-18', 1150, 'Approved', 'Consistent performance.'),
+(15, 'AA015', 3, '2025-12-20', 420, 'Approved', 'Decent performance.');
 
 -- --------------------------------------------------------
 
