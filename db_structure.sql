@@ -125,20 +125,20 @@ CREATE TABLE `competitions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `competitions` (`competitionID`, `competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`) VALUES
-(1, 'WA90 Open Championship', '2025-01-05', 'Melbourne Archery Club', 1, 'MOPEN'),
-(2, 'WA70 Open Championship', '2025-01-12', 'Melbourne Archery Club', 2, 'FOPEN'),
-(3, 'WA60 Invitational', '2025-01-20', 'Melbourne Archery Club', 3, 'MU21'),
-(4, 'AA50 Championship', '2025-02-01', 'Melbourne Archery Club', 4, 'FU21'),
-(5, 'AA40 Classic', '2025-02-10', 'Melbourne Archery Club', 5, 'M50+'),
-(6, 'Long Sydney Tournament', '2025-02-25', 'Melbourne Archery Club', 6, 'F50+'),
-(7, 'Sydney Open', '2025-03-05', 'Melbourne Archery Club', 7, 'M60+'),
-(8, 'Long Brisbane Challenge', '2025-03-20', 'Melbourne Archery Club', 8, 'F60+'),
-(9, 'Brisbane Ranking Event', '2025-04-01', 'Melbourne Archery Club', 9, 'M70+'),
-(10, 'Adelaide Cup', '2025-04-15', 'Melbourne Archery Club', 10, 'F70+'),
-(11, 'Short Adelaide Shoot', '2025-05-01', 'Melbourne Archery Club', 11, 'MU18'),
-(12, 'Hobart Junior Event', '2025-05-20', 'Melbourne Archery Club', 12, 'FU18'),
-(13, 'Perth Championship', '2025-06-05', 'Melbourne Archery Club', 13, 'MU16');
+INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`) VALUES
+('WA90 Open Championship', '2025-01-05', 'Melbourne Archery Club', 1, 'MOPEN'),
+('WA70 Open Championship', '2025-01-12', 'Melbourne Archery Club', 2, 'FOPEN'),
+('WA60 Invitational', '2025-01-20', 'Melbourne Archery Club', 3, 'MU21'),
+('AA50 Championship', '2025-02-01', 'Melbourne Archery Club', 4, 'FU21'),
+('AA40 Classic', '2025-02-10', 'Melbourne Archery Club', 5, 'M50+'),
+('Long Sydney Tournament', '2025-02-25', 'Melbourne Archery Club', 6, 'F50+'),
+('Sydney Open', '2025-03-05', 'Melbourne Archery Club', 7, 'M60+'),
+('Long Brisbane Challenge', '2025-03-20', 'Melbourne Archery Club', 8, 'F60+'),
+('Brisbane Ranking Event', '2025-04-01', 'Melbourne Archery Club', 9, 'M70+'),
+('Adelaide Cup', '2025-04-15', 'Melbourne Archery Club', 10, 'F70+'),
+('Short Adelaide Shoot', '2025-05-01', 'Melbourne Archery Club', 11, 'MU18'),
+('Hobart Junior Event', '2025-05-20', 'Melbourne Archery Club', 12, 'FU18'),
+('Perth Championship', '2025-06-05', 'Melbourne Archery Club', 13, 'MU16');
 --
 -- Table structure for table `competitions_entry`
 --
@@ -154,22 +154,22 @@ CREATE TABLE `competitions_entry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `competitions_entry` (`entryID`, `archerID`, `competitionID`, `totalScore`, `status`, `notes`) VALUES
-(1, 'AA001', 1, 1320, 'Approved', 'Strong finish'),
-(2, 'AA002', 2, 1285, 'Approved', 'Great Consistency'),
-(3, 'AA003', 3, 1340, 'Approved', 'Strong finish'),
-(4, 'AA004', 4, 1295, 'Approved', 'Great start'),
-(5, 'AA005', 5, 1250, 'Approved', 'Solid performance'),
-(6, 'AA006', 6, 1310, 'Approved', 'Personal record'),
-(7, 'AA007', 7, 870, 'Pending', 'Waiting for score confirmation'),
-(8, 'AA008', 8, 1335, 'Approved', 'Quite consistent'),
-(9, 'AA009', 9, 860, 'Approved', 'Consistant'),
-(10, 'AA010', 10, 845, 'Approved', 'Great Performance'),
-(11, 'AA011', 11, 690, 'Pending', 'Waiting for score confirmation'),
-(12, 'AA012', 12, 710, 'Approved', 'Great performance'),
-(13, 'AA013', 13, 880, 'Approved', 'Strong finish'),
-(14, 'AA014', 1, 1290, 'Approved', 'Consistant'),
-(15, 'AA015', 2, 1265, 'Approved', 'Stong finish');
+INSERT INTO `competitions_entry` (`archerID`, `competitionID`, `totalScore`, `status`, `notes`) VALUES
+('AA001', 1, 1320, 'Approved', 'Strong finish'),
+('AA002', 2, 1285, 'Approved', 'Great Consistency'),
+('AA003', 3, 1340, 'Approved', 'Strong finish'),
+('AA004', 4, 1295, 'Approved', 'Great start'),
+('AA005', 5, 1250, 'Approved', 'Solid performance'),
+('AA006', 6, 1310, 'Approved', 'Personal record'),
+('AA007', 7, 870, 'Pending', 'Waiting for score confirmation'),
+('AA008', 8, 1335, 'Approved', 'Quite consistent'),
+('AA009', 9, 860, 'Approved', 'Consistant'),
+('AA010', 10, 845, 'Approved', 'Great Performance'),
+('AA011', 11, 690, 'Pending', 'Waiting for score confirmation'),
+('AA012', 12, 710, 'Approved', 'Great performance'),
+('AA013', 13, 880, 'Approved', 'Strong finish'),
+('AA014', 1, 1290, 'Approved', 'Consistant'),
+('AA015', 2, 1265, 'Approved', 'Stong finish');
 --
 -- Table structure for table `competition_round_ranges`
 --
@@ -215,22 +215,22 @@ CREATE TABLE `ends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `ends` (`endID`, `arrow1`, `arrow2`, `arrow3`, `arrow4`, `arrow5`, `arrow6`, `bullseyeCount`) VALUES
-(1, 8, 8, 9, 9, 10, 10, 2),
-(2, 10, 7, 9, 8, 8, 9, 1),
-(3, 9, 9, 8, 10, 10, 10, 3),
-(4, 9, 9, 8, 8, 7, 7, 0),
-(5, 10, 10, 9, 8, 8, 8, 2),
-(6, 9, 9, 9, 8, 7, 6, 0),
-(7, 10, 10, 10, 10, 9, 8, 4),
-(8, 8, 8, 8, 7, 7, 6, 0),
-(9, 10, 9, 9, 9, 8, 8, 1),
-(10, 10, 10, 9, 9, 9, 9, 2),
-(11, 9, 8, 8, 8, 7, 7, 0),
-(12, 10, 10, 10, 9, 8, 8, 3),
-(13, 7, 9, 8, 8, 8, 9, 0),
-(14, 10, 9, 9, 8, 8, 8, 1),
-(15, 7, 8, 9, 9, 10, 10, 2);
+INSERT INTO `ends` (`arrow1`, `arrow2`, `arrow3`, `arrow4`, `arrow5`, `arrow6`, `bullseyeCount`) VALUES
+(8, 8, 9, 9, 10, 10, 2),
+(10, 7, 9, 8, 8, 9, 1),
+(9, 9, 8, 10, 10, 10, 3),
+(9, 9, 8, 8, 7, 7, 0),
+(10, 10, 9, 8, 8, 8, 2),
+(9, 9, 9, 8, 7, 6, 0),
+(10, 10, 10, 10, 9, 8, 4),
+(8, 8, 8, 7, 7, 6, 0),
+(10, 9, 9, 9, 8, 8, 1),
+(10, 10, 9, 9, 9, 9, 2),
+(9, 8, 8, 8, 7, 7, 0),
+(10, 10, 10, 9, 8, 8, 3),
+(7, 9, 8, 8, 8, 9, 0),
+(10, 9, 9, 8, 8, 8, 1),
+(7, 8, 9, 9, 10, 10, 2);
 --
 -- Table structure for table `individual_recorded_rounds`
 --
@@ -250,22 +250,22 @@ CREATE TABLE `individual_recorded_rounds` (
 -- Insert data for table `individual_recorded_rounds`
 --
 
-INSERT INTO `individual_recorded_rounds` (`recordedRoundID`, `archerID`, `roundID`, `dateCompleted`, `totalScore`, `status`, `notes`) VALUES
-(1, 'AA001', 1, '2025-10-15', 1400, 'Approved', 'Great performance!'),
-(2, 'AA002', 2, '2025-11-20', 1350, 'Approved', 'Well done!'),
-(3, 'AA003', 3, '2025-12-05', 680, 'Pending', 'Score under review.'),
-(4, 'AA004', 4, '2025-10-30', 850, 'Rejected', 'Score does not meet criteria.'),
-(5, 'AA005', 5, '2025-11-10', 1420, 'Approved', 'Excellent shot placement.'),
-(6, 'AA006', 6, '2025-12-01', 700, 'Pending', 'Awaiting further evaluation.'),
-(7, 'AA007', 7, '2025-10-25', 880, 'Approved', 'Strong start but needs improvement.'),
-(8, 'AA008', 8, '2025-11-15', 640, 'Approved', 'Strong start to the season.'),
-(9, 'AA009', 9, '2025-12-10', 750, 'Pending', 'Awaiting score finalization.'),
-(10, 'AA010', 10, '2025-10-20', 480, 'Pending', 'Needs improvement.'),
-(11, 'AA011', 11, '2025-11-05', 860, 'Approved', 'Decent performance.'),
-(12, 'AA012', 12, '2025-12-15', 600, 'Approved', 'Decent performance.'),
-(13, 'AA013', 1, '2025-10-28', 1200, 'Pending', 'Awaiting further evaluation.'),
-(14, 'AA014', 2, '2025-11-18', 1150, 'Approved', 'Consistent performance.'),
-(15, 'AA015', 3, '2025-12-20', 420, 'Approved', 'Decent performance.');
+INSERT INTO `individual_recorded_rounds` (`archerID`, `roundID`, `dateCompleted`, `totalScore`, `status`, `notes`) VALUES
+('AA001', 1, '2025-10-15', 1400, 'Approved', 'Great performance!'),
+('AA002', 2, '2025-11-20', 1350, 'Approved', 'Well done!'),
+('AA003', 3, '2025-12-05', 680, 'Pending', 'Score under review.'),
+('AA004', 4, '2025-10-30', 850, 'Rejected', 'Score does not meet criteria.'),
+('AA005', 5, '2025-11-10', 1420, 'Approved', 'Excellent shot placement.'),
+('AA006', 6, '2025-12-01', 700, 'Pending', 'Awaiting further evaluation.'),
+('AA007', 7, '2025-10-25', 880, 'Approved', 'Strong start but needs improvement.'),
+('AA008', 8, '2025-11-15', 640, 'Approved', 'Strong start to the season.'),
+('AA009', 9, '2025-12-10', 750, 'Pending', 'Awaiting score finalization.'),
+('AA010', 10, '2025-10-20', 480, 'Pending', 'Needs improvement.'),
+('AA011', 11, '2025-11-05', 860, 'Approved', 'Decent performance.'),
+('AA012', 12, '2025-12-15', 600, 'Approved', 'Decent performance.'),
+('AA013', 1, '2025-10-28', 1200, 'Pending', 'Awaiting further evaluation.'),
+('AA014', 2, '2025-11-18', 1150, 'Approved', 'Consistent performance.'),
+('AA015', 3, '2025-12-20', 420, 'Approved', 'Decent performance.');
 
 -- --------------------------------------------------------
 
@@ -300,14 +300,14 @@ CREATE TABLE `ranges` (
 -- Insert data for table `ranges`
 --
 
-INSERT INTO `ranges` (`rangeID`, `distance`, `endCount`, `targetFace`) VALUES
-(1, '20', 6, '80'),
-(2, '30', 6, '80'),
-(3, '40', 6, '122'),
-(4, '50', 6, '122'),
-(5, '60', 6, '122'),
-(6, '70', 6, '122'),
-(7, '90', 6, '122');
+INSERT INTO `ranges` (`distance`, `endCount`, `targetFace`) VALUES
+('20', 6, '80'),
+('30', 6, '80'),
+('40', 6, '122'),
+('50', 6, '122'),
+('60', 6, '122'),
+('70', 6, '122'),
+('90', 6, '122');
 
 -- --------------------------------------------------------
 
@@ -361,20 +361,20 @@ CREATE TABLE `rounds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `rounds` (`roundID`, `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
-(1, 'WA90/1440', 144, 1440, '2025-01-01', NULL),
-(2, 'WA70/1440', 144, 1440, '2025-01-01', NULL),
-(3, 'WA60/1440', 144, 1440, '2025-01-01', NULL),
-(4, 'AA50/1440', 144, 1440, '2025-01-01', NULL),
-(5, 'AA40/1440', 144, 1440, '2025-01-01', NULL),
-(6, 'Long Sydney', 120, 1200, '2025-01-01', NULL),
-(7, 'Sydney', 120, 1200, '2025-01-01', NULL),
-(8, 'Long Brisbane', 120, 1200, '2025-01-01', NULL),
-(9, 'Brisbane', 120, 1200, '2025-01-01', NULL),
-(10, 'Adelaide', 120, 1200, '2025-01-01', NULL),
-(11, 'Short Adelaide', 120, 1200, '2025-01-01', NULL),
-(12, 'Hobart', 90, 900, '2025-01-01', NULL),
-(13, 'Perth', 90, 900, '2025-01-01', NULL);
+INSERT INTO `rounds` (`roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
+('WA90/1440', 144, 1440, '2025-01-01', NULL),
+('WA70/1440', 144, 1440, '2025-01-01', NULL),
+('WA60/1440', 144, 1440, '2025-01-01', NULL),
+('AA50/1440', 144, 1440, '2025-01-01', NULL),
+('AA40/1440', 144, 1440, '2025-01-01', NULL),
+('Long Sydney', 120, 1200, '2025-01-01', NULL),
+('Sydney', 120, 1200, '2025-01-01', NULL),
+('Long Brisbane', 120, 1200, '2025-01-01', NULL),
+('Brisbane', 120, 1200, '2025-01-01', NULL),
+('Adelaide', 120, 1200, '2025-01-01', NULL),
+('Short Adelaide', 120, 1200, '2025-01-01', NULL),
+('Hobart', 90, 900, '2025-01-01', NULL),
+('Perth', 90, 900, '2025-01-01', NULL);
 --
 -- Table structure for table `round_ranges`
 --
@@ -507,19 +507,19 @@ ALTER TABLE `range_ends`
 --
 ALTER TABLE `rounds`
   ADD PRIMARY KEY (`roundID`);
-INSERT INTO `rounds` (`roundID`, `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
-(1, 'WA90/1440', 144, 1440, '2025-10-01', NULL),
-(2, 'WA70/1440', 144, 1440, '0000-00-00', NULL),
-(3, 'WA720', 72, 720, '2025-01-02', NULL),
-(4, 'WA900', 90, 900, '0000-00-00', NULL),
-(5, 'Canberra Round', 144, 1440, '2025-04-03', NULL),
-(6, 'Short Canberra Round', 72, 720, '0000-00-00', NULL),
-(7, 'Sydney Round', 144, 1440, '0000-00-00', NULL),
-(8, 'Short Sydney Round', 72, 720, '0000-00-00', NULL),
-(9, 'Adelaide Round', 90, 900, '2025-08-05', NULL),
-(10, 'Brisbane Round', 72, 720, '2025-01-06', NULL),
-(11, 'Melbourne Round', 144, 1440, '2025-10-08', NULL),
-(12, 'Perth Round', 90, 900, '2025-12-09', NULL);
+INSERT INTO `rounds` ( `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
+('WA90/1440', 144, 1440, '2025-10-01', NULL),
+('WA70/1440', 144, 1440, '0000-00-00', NULL),
+('WA720', 72, 720, '2025-01-02', NULL),
+('WA900', 90, 900, '0000-00-00', NULL),
+('Canberra Round', 144, 1440, '2025-04-03', NULL),
+('Short Canberra Round', 72, 720, '0000-00-00', NULL),
+('Sydney Round', 144, 1440, '0000-00-00', NULL),
+('Short Sydney Round', 72, 720, '0000-00-00', NULL),
+('Adelaide Round', 90, 900, '2025-08-05', NULL),
+('Brisbane Round', 72, 720, '2025-01-06', NULL),
+('Melbourne Round', 144, 1440, '2025-10-08', NULL),
+('Perth Round', 90, 900, '2025-12-09', NULL);
 --
 -- Indexes for dumped tables
 --
