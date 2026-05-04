@@ -281,10 +281,8 @@ CREATE TABLE `individual_round_ranges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Insert data for table `individual_round_ranges`
+--Insert data for table `individual_round_ranges`
 --
-
---INSERT INTO `individual_round_ranges` (`recordedRoundID`, `recordedRangeID`, `rangePositionNumber`) VALUES
 
 
 -- --------------------------------------------------------
