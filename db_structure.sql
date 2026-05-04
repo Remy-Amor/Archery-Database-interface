@@ -519,19 +519,7 @@ ALTER TABLE `ranges`
 ALTER TABLE `rounds`
   ADD PRIMARY KEY (`roundID`);
 
-INSERT INTO `rounds` ( `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
-('WA90/1440', 144, 1440, '2025-10-01', NULL),
-('WA70/1440', 144, 1440, '0000-00-00', NULL),
-('WA720', 72, 720, '2025-01-02', NULL),
-('WA900', 90, 900, '0000-00-00', NULL),
-('Canberra Round', 144, 1440, '2025-04-03', NULL),
-('Short Canberra Round', 72, 720, '0000-00-00', NULL),
-('Sydney Round', 144, 1440, '0000-00-00', NULL),
-('Short Sydney Round', 72, 720, '0000-00-00', NULL),
-('Adelaide Round', 90, 900, '2025-08-05', NULL),
-('Brisbane Round', 72, 720, '2025-01-06', NULL),
-('Melbourne Round', 144, 1440, '2025-10-08', NULL),
-('Perth Round', 90, 900, '2025-12-09', NULL);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
