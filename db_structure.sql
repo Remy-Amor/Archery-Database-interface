@@ -195,19 +195,19 @@ CREATE TABLE `individual_recorded_rounds` (
 INSERT INTO `individual_recorded_rounds` (`recordedRoundID`, `archerID`, `roundID`, `dateCompleted`, `totalScore`, `status`, `notes`) VALUES
 (1, 'AA001', 1, '2025-10-15', 1400, 'Approved', 'Great performance!'),
 (2, 'AA002', 2, '2025-11-20', 1350, 'Approved', 'Well done!'),
-(3, 'AA003', 3, '2025-12-05', 680, 'Pending', ''),
+(3, 'AA003', 3, '2025-12-05', 680, 'Pending', 'Score under review.'),
 (4, 'AA004', 4, '2025-10-30', 850, 'Rejected', 'Score does not meet criteria.'),
-(5, 'AA005', 5, '2025-11-10', 1420, 'Approved', ''),
-(6, 'AA006', 6, '2025-12-01', 700, 'Pending', ''),
-(7, 'AA007', 7, '2025-10-25', 880, 'Approved', ''),
-(8, 'AA008', 1, '2025-11-15', 1380, 'Approved', ''),
-(9, 'AA009', 2, '2025-12-10', 1320, 'Pending', ''),
+(5, 'AA005', 5, '2025-11-10', 1420, 'Approved', 'Excellent shot placement.'),
+(6, 'AA006', 6, '2025-12-01', 700, 'Pending', 'Awaiting further evaluation.'),
+(7, 'AA007', 7, '2025-10-25', 880, 'Approved', 'Consistent performance.'),
+(8, 'AA008', 1, '2025-11-15', 1380, 'Approved', 'Strong start to the season.'),
+(9, 'AA009', 2, '2025-12-10', 1320, 'Pending', 'Needs improvement.'),
 (10, 'AA010', 3, '2025-10-20', 690, 'Rejected', 'Score does not meet criteria.'),
-(11, 'AA011', 4, '2025-11-05', 860, 'Approved', ''),
-(12, 'AA012', 5, '2025-12-15', 1410, 'Approved', ''),
-(13, 'AA013', 6, '2025-10-28', 720, 'Pending', ''),
-(14, 'AA014', 7, '2025-11-18', 890, 'Approved', ''),
-(15, 'AA015', 1, '2025-12-20', 1390, 'Approved', '');
+(11, 'AA011', 4, '2025-11-05', 860, 'Approved', 'Good performance.'),
+(12, 'AA012', 5, '2025-12-15', 1410, 'Approved', 'Outstanding performance.'),
+(13, 'AA013', 6, '2025-10-28', 720, 'Pending', 'Awaiting further evaluation.'),
+(14, 'AA014', 7, '2025-11-18', 890, 'Approved', 'Consistent performance.'),
+(15, 'AA015', 1, '2025-12-20', 1390, 'Approved', 'Excellent performance.');
 
 -- --------------------------------------------------------
 
@@ -221,6 +221,29 @@ CREATE TABLE `individual_round_ranges` (
   `recordedRangeID` int(11) NOT NULL,
   `rangePositionNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Insert data for table `individual_round_ranges`
+--
+
+INSERT INTO `individual_round_ranges` (`recordedRoundID`, `recordedRangeID`, `rangePositionNumber`) VALUES
+(1, 1, 1),
+(1, 2, 2),
+(1, 3, 3),
+(1, 4, 4),
+(1, 5, 5),
+(1, 6, 6),
+(2, 1, 1),
+(2, 2, 2),
+(2, 3, 3),
+(2, 4, 4),
+(2, 5, 5),
+(2, 7, 6),
+(3, 3, 1),
+(3, 4, 2),
+(3, 5, 3),
+(3, 6, 4),
+(3, 7, 5);
 
 -- --------------------------------------------------------
 
@@ -263,6 +286,29 @@ CREATE TABLE `range_ends` (
   `rangeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Insert data for table `range_ends`
+--
+
+INSERT INTO `range_ends` (`recordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
+(1, 1, 1, 1),
+(1, 2, 2, 1),
+(1, 3, 3, 1),
+(1, 4, 4, 1),
+(1, 5, 5, 1),
+(1, 6, 6, 1),
+(2, 7, 1, 2),
+(2, 8, 2, 2),
+(2, 9, 3, 2),
+(2, 10, 4, 2),
+(2, 11, 5, 2),
+(2, 12, 6, 2),
+(3, 13, 1, 3),
+(3, 14, 2, 3),
+(3, 15, 3, 3),
+(3, 16, 4, 3),
+(3, 17, 5, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -291,6 +337,29 @@ CREATE TABLE `round_ranges` (
   `rangeID` int(11) NOT NULL,
   `rangeSequence` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Insert data for table `round_ranges`
+--
+
+INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
+(1, 7, 1),
+(1, 6, 2),
+(1, 5, 3),
+(1, 4, 4),
+(1, 3, 5),
+(1, 2, 6),
+(2, 7, 1),
+(2, 6, 2),
+(2, 5, 3),
+(2, 4, 4),
+(2, 3, 5),
+(2, 1, 6),
+(3, 5, 1),
+(3, 4, 2),
+(3, 3, 3),
+(3, 2, 4),
+(3, 1, 5);
 
 --
 -- Indexes for dumped tables
