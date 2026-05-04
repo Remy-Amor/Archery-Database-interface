@@ -40,7 +40,7 @@ CREATE TABLE `archers` (
 --
 -- Dumping data for table `archers`
 --
-
+TRUNCATE TABLE `archers`;
 INSERT INTO `archers` (`archeryAustraliaID`, `firstName`, `lastName`, `dateOfBirth`, `gender`, `defaultDivision`) VALUES
 ('AA001', 'Spike', 'Gronw', '1998-04-12', 'Male', 'R'),
 ('AA002', 'Bridget', 'Toner', '2001-09-03', 'Female', 'C'),
@@ -89,7 +89,7 @@ CREATE TABLE `classes` (
 --
 -- Dumping data for table `classes`
 --
-
+TRUNCATE TABLE `classes`;
 INSERT INTO `classes` (`classID`, `ageGroupMin`, `ageGroupMax`, `gender`) VALUES
 ('F50+', 50, 59, 'Female'),
 ('F60+', 60, 69, 'Female'),
@@ -125,6 +125,7 @@ CREATE TABLE `competitions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+TRUNCATE TABLE `competitions`;
 INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`) VALUES
 ('WA90 Open Championship', '2025-01-05', 'Melbourne Archery Club', 1, 'MOPEN'),
 ('WA70 Open Championship', '2025-01-12', 'Melbourne Archery Club', 2, 'FOPEN'),
@@ -139,6 +140,7 @@ INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `
 ('Short Adelaide Shoot', '2025-05-01', 'Melbourne Archery Club', 11, 'MU18'),
 ('Hobart Junior Event', '2025-05-20', 'Melbourne Archery Club', 12, 'FU18'),
 ('Perth Championship', '2025-06-05', 'Melbourne Archery Club', 13, 'MU16');
+
 --
 -- Table structure for table `competitions_entry`
 --
@@ -154,6 +156,7 @@ CREATE TABLE `competitions_entry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+TRUNCATE TABLE `competitions_entry`;
 INSERT INTO `competitions_entry` (`archerID`, `competitionID`, `totalScore`, `status`, `notes`) VALUES
 ('AA001', 1, 1320, 'Approved', 'Strong finish'),
 ('AA002', 2, 1285, 'Approved', 'Great Consistency'),
@@ -170,6 +173,7 @@ INSERT INTO `competitions_entry` (`archerID`, `competitionID`, `totalScore`, `st
 ('AA013', 13, 880, 'Approved', 'Strong finish'),
 ('AA014', 1, 1290, 'Approved', 'Consistant'),
 ('AA015', 2, 1265, 'Approved', 'Stong finish');
+
 --
 -- Table structure for table `competition_round_ranges`
 --
@@ -184,6 +188,7 @@ CREATE TABLE `competition_round_ranges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+TRUNCATE TABLE `competition_round_ranges`;
 INSERT INTO `competition_round_ranges` (`entryID`, `rangePositionNumber`) VALUES
 (1, 1),
 (2, 1),
@@ -200,6 +205,7 @@ INSERT INTO `competition_round_ranges` (`entryID`, `rangePositionNumber`) VALUES
 (13, 1),
 (14, 1),
 (15, 1);
+
 --
 -- Table structure for table `competition_range_ends`
 --
@@ -219,7 +225,7 @@ CREATE TABLE `competition_range_ends` (
 --
 -- Insert data for table `competition_range_ends`
 --
-
+TRUNCATE TABLE `competition_range_ends`;
 INSERT INTO `competition_range_ends` (`competitionRecordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
 (1, 1, 1, 1),
 (1, 2, 2, 1),
@@ -256,6 +262,7 @@ CREATE TABLE `ends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+TRUNCATE TABLE `ends`;
 INSERT INTO `ends` (`arrow1`, `arrow2`, `arrow3`, `arrow4`, `arrow5`, `arrow6`, `bullseyeCount`) VALUES
 (8, 8, 9, 9, 10, 10, 2),
 (10, 7, 9, 8, 8, 9, 1),
@@ -272,6 +279,7 @@ INSERT INTO `ends` (`arrow1`, `arrow2`, `arrow3`, `arrow4`, `arrow5`, `arrow6`, 
 (7, 9, 8, 8, 8, 9, 0),
 (10, 9, 9, 8, 8, 8, 1),
 (7, 8, 9, 9, 10, 10, 2);
+
 --
 -- Table structure for table `individual_recorded_rounds`
 --
@@ -290,7 +298,7 @@ CREATE TABLE `individual_recorded_rounds` (
 --
 -- Insert data for table `individual_recorded_rounds`
 --
-
+TRUNCATE TABLE `individual_recorded_rounds`;
 INSERT INTO `individual_recorded_rounds` (`archerID`, `roundID`, `dateCompleted`, `totalScore`, `status`, `notes`) VALUES
 ('AA001', 1, '2025-10-15', 1400, 'Approved', 'Great performance!'),
 ('AA002', 2, '2025-11-20', 1350, 'Approved', 'Well done!'),
@@ -358,7 +366,7 @@ CREATE TABLE `ranges` (
 --
 -- Insert data for table `ranges`
 --
-
+TRUNCATE TABLE `ranges`;
 INSERT INTO `ranges` (`distance`, `endCount`, `targetFace`) VALUES
 ('20', 6, '80'),
 ('30', 6, '80'),
@@ -385,6 +393,7 @@ CREATE TABLE `rounds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+TRUNCATE TABLE `rounds`;
 INSERT INTO `rounds` (`roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
 ('WA90/1440', 144, 1440, '2025-01-01', NULL),
 ('WA70/1440', 144, 1440, '2025-01-01', NULL),
@@ -399,6 +408,7 @@ INSERT INTO `rounds` (`roundName`, `arrowCount`, `maxScore`, `activeStartDate`, 
 ('Short Adelaide', 120, 1200, '2025-01-01', NULL),
 ('Hobart', 90, 900, '2025-01-01', NULL),
 ('Perth', 90, 900, '2025-01-01', NULL);
+
 --
 -- Table structure for table `round_ranges`
 --
@@ -415,7 +425,7 @@ CREATE TABLE `round_ranges` (
 --
 -- Insert data for table `round_ranges`
 --
-
+TRUNCATE TABLE `round_ranges`;
 INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
 (1, 7, 1),
 (1, 6, 2),
