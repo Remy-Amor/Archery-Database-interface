@@ -280,9 +280,6 @@ CREATE TABLE `individual_round_ranges` (
   `rangePositionNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
---Insert data for table `individual_round_ranges`
---
 
 
 -- --------------------------------------------------------
