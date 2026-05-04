@@ -176,28 +176,69 @@ INSERT INTO `competitions_entry` (`archerID`, `competitionID`, `totalScore`, `st
 
 DROP TABLE IF EXISTS `competition_round_ranges`;
 CREATE TABLE `competition_round_ranges` (
+  `competitionRecordedRangeID` int(11) NOT NULL AUTO_INCREMENT,
   `entryID` int(11) NOT NULL,
-  `recordedRangeID` int(11) NOT NULL,
-  `rangePositionNumber` int(11) NOT NULL
+  `rangePositionNumber` int(11) NOT NULL,
+  PRIMARY KEY (`competitionRecordedRangeID`),
+  UNIQUE KEY `uk_comp_position` (`entryID`,`rangePositionNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `competition_round_ranges` (`entryID`, `recordedRangeID`, `rangePositionNumber`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1),
-(4, 4, 1),
-(5, 5, 1),
-(6, 6, 1),
-(7, 7, 1),
-(8, 8, 1),
-(9, 9, 1),
-(10, 10, 1),
-(11, 11, 1),
-(12, 12, 1),
-(13, 13, 1),
-(14, 14, 1),
-(15, 15, 1);
+INSERT INTO `competition_round_ranges` (`entryID`, `rangePositionNumber`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1);
+--
+-- Table structure for table `competition_range_ends`
+--
+
+DROP TABLE IF EXISTS `competition_range_ends`;
+CREATE TABLE `competition_range_ends` (
+  `competitionRecordedRangeID` int(11) NOT NULL,
+  `endID` int(11) NOT NULL,
+  `endPositionNumber` int(11) NOT NULL,
+  `rangeID` int(11) NOT NULL,
+  PRIMARY KEY (`competitionRecordedRangeID`,`endID`),
+  UNIQUE KEY `uk_comp_range_end_position` (`competitionRecordedRangeID`,`endPositionNumber`),
+  KEY `endID` (`endID`),
+  KEY `rangeID` (`rangeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Insert data for table `competition_range_ends`
+--
+
+INSERT INTO `competition_range_ends` (`competitionRecordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
+(1, 1, 1, 1),
+(1, 2, 2, 1),
+(1, 3, 3, 1),
+(1, 4, 4, 1),
+(1, 5, 5, 1),
+(1, 6, 6, 1),
+(2, 7, 1, 2),
+(2, 8, 2, 2),
+(2, 9, 3, 2),
+(2, 10, 4, 2),
+(2, 11, 5, 2),
+(2, 12, 6, 2),
+(3, 13, 1, 3),
+(3, 14, 2, 3),
+(3, 15, 3, 3);
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `ends`
 --
@@ -275,12 +316,30 @@ INSERT INTO `individual_recorded_rounds` (`archerID`, `roundID`, `dateCompleted`
 
 DROP TABLE IF EXISTS `individual_round_ranges`;
 CREATE TABLE `individual_round_ranges` (
+  `individualRecordedRangeID` int(11) NOT NULL AUTO_INCREMENT,
   `recordedRoundID` int(11) NOT NULL,
-  `recordedRangeID` int(11) NOT NULL,
-  `rangePositionNumber` int(11) NOT NULL
+  `rangePositionNumber` int(11) NOT NULL,
+  PRIMARY KEY (`individualRecordedRangeID`),
+  KEY `recordedRoundID` (`recordedRoundID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `individual_range_ends`
+--
+
+DROP TABLE IF EXISTS `individual_range_ends`;
+CREATE TABLE `individual_range_ends` (
+  `individualRecordedRangeID` int(11) NOT NULL,
+  `endID` int(11) NOT NULL,
+  `endPositionNumber` int(11) NOT NULL,
+  `rangeID` int(11) NOT NULL,
+  PRIMARY KEY (`individualRecordedRangeID`,`endID`),
+  UNIQUE KEY `uk_indiv_range_end_position` (`individualRecordedRangeID`,`endPositionNumber`),
+  KEY `endID` (`endID`),
+  KEY `rangeID` (`rangeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -308,41 +367,6 @@ INSERT INTO `ranges` (`distance`, `endCount`, `targetFace`) VALUES
 ('60', 6, '122'),
 ('70', 6, '122'),
 ('90', 6, '122');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `range_ends`
---
-
-DROP TABLE IF EXISTS `range_ends`;
-CREATE TABLE `range_ends` (
-  `recordedRangeID` int(11) NOT NULL,
-  `endID` int(11) NOT NULL,
-  `endPositionNumber` int(11) NOT NULL,
-  `rangeID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Insert data for table `range_ends`
---
-
-INSERT INTO `range_ends` (`recordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
-(1, 1, 1, 1),
-(1, 2, 2, 1),
-(1, 3, 3, 1),
-(1, 4, 4, 1),
-(1, 5, 5, 1),
-(1, 6, 6, 1),
-(2, 7, 1, 2),
-(2, 8, 2, 2),
-(2, 9, 3, 2),
-(2, 10, 4, 2),
-(2, 11, 5, 2),
-(2, 12, 6, 2),
-(3, 13, 1, 3),
-(3, 14, 2, 3),
-(3, 15, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -383,7 +407,9 @@ DROP TABLE IF EXISTS `round_ranges`;
 CREATE TABLE `round_ranges` (
   `roundID` int(11) NOT NULL,
   `rangeID` int(11) NOT NULL,
-  `rangeSequence` int(11) NOT NULL
+  `rangeSequence` int(11) NOT NULL,
+  PRIMARY KEY (`roundID`,`rangeSequence`),
+  KEY `rangeID` (`rangeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -432,8 +458,6 @@ INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
 -- Indexes for dumped tables
 --
 
-
-
 --
 -- Indexes for table `classes`
 --
@@ -459,13 +483,6 @@ ALTER TABLE `competitions_entry`
   ADD KEY `idx_comp_entry_status` (`status`);
 
 --
--- Indexes for table `competition_round_ranges`
---
-ALTER TABLE `competition_round_ranges`
-  ADD PRIMARY KEY (`recordedRangeID`),
-  ADD UNIQUE KEY `uk_comp_position` (`entryID`,`rangePositionNumber`);
-
---
 -- Indexes for table `ends`
 --
 ALTER TABLE `ends`
@@ -481,32 +498,17 @@ ALTER TABLE `individual_recorded_rounds`
   ADD KEY `idx_individual_status` (`status`);
 
 --
--- Indexes for table `individual_round_ranges`
---
-ALTER TABLE `individual_round_ranges`
-  ADD PRIMARY KEY (`recordedRangeID`),
-  ADD KEY `recordedRoundID` (`recordedRoundID`);
-
---
 -- Indexes for table `ranges`
 --
 ALTER TABLE `ranges`
   ADD PRIMARY KEY (`rangeID`);
 
 --
--- Indexes for table `range_ends`
---
-ALTER TABLE `range_ends`
-  ADD PRIMARY KEY (`recordedRangeID`,`endID`),
-  ADD UNIQUE KEY `uk_range_end_position` (`recordedRangeID`,`endPositionNumber`),
-  ADD KEY `endID` (`endID`),
-  ADD KEY `rangeID` (`rangeID`);
-
---
 -- Indexes for table `rounds`
 --
 ALTER TABLE `rounds`
   ADD PRIMARY KEY (`roundID`);
+
 INSERT INTO `rounds` ( `roundName`, `arrowCount`, `maxScore`, `activeStartDate`, `activeEndDate`) VALUES
 ('WA90/1440', 144, 1440, '2025-10-01', NULL),
 ('WA70/1440', 144, 1440, '0000-00-00', NULL),
@@ -520,32 +522,6 @@ INSERT INTO `rounds` ( `roundName`, `arrowCount`, `maxScore`, `activeStartDate`,
 ('Brisbane Round', 72, 720, '2025-01-06', NULL),
 ('Melbourne Round', 144, 1440, '2025-10-08', NULL),
 ('Perth Round', 90, 900, '2025-12-09', NULL);
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `rounds`
---
-ALTER TABLE `rounds`
-  ADD PRIMARY KEY (`roundID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `rounds`
---
-ALTER TABLE `rounds`
-  MODIFY `roundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-COMMIT;
---
--- Indexes for table `round_ranges`
---
-ALTER TABLE `round_ranges`
-  ADD PRIMARY KEY (`roundID`,`rangeSequence`),
-  ADD KEY `rangeID` (`rangeID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -567,7 +543,7 @@ ALTER TABLE `competitions_entry`
 -- AUTO_INCREMENT for table `competition_round_ranges`
 --
 ALTER TABLE `competition_round_ranges`
-  MODIFY `recordedRangeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `competitionRecordedRangeID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ends`
@@ -585,7 +561,7 @@ ALTER TABLE `individual_recorded_rounds`
 -- AUTO_INCREMENT for table `individual_round_ranges`
 --
 ALTER TABLE `individual_round_ranges`
-  MODIFY `recordedRangeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `individualRecordedRangeID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ranges`
@@ -624,6 +600,14 @@ ALTER TABLE `competition_round_ranges`
   ADD CONSTRAINT `competition_round_ranges_ibfk_1` FOREIGN KEY (`entryID`) REFERENCES `competitions_entry` (`entryID`);
 
 --
+-- Constraints for table `competition_range_ends`
+--
+ALTER TABLE `competition_range_ends`
+  ADD CONSTRAINT `comp_range_ends_ibfk_1` FOREIGN KEY (`competitionRecordedRangeID`) REFERENCES `competition_round_ranges` (`competitionRecordedRangeID`),
+  ADD CONSTRAINT `comp_range_ends_ibfk_2` FOREIGN KEY (`endID`) REFERENCES `ends` (`endID`),
+  ADD CONSTRAINT `comp_range_ends_ibfk_3` FOREIGN KEY (`rangeID`) REFERENCES `ranges` (`rangeID`);
+
+--
 -- Constraints for table `individual_recorded_rounds`
 --
 ALTER TABLE `individual_recorded_rounds`
@@ -637,11 +621,12 @@ ALTER TABLE `individual_round_ranges`
   ADD CONSTRAINT `individual_round_ranges_ibfk_1` FOREIGN KEY (`recordedRoundID`) REFERENCES `individual_recorded_rounds` (`recordedRoundID`);
 
 --
--- Constraints for table `range_ends`
+-- Constraints for table `individual_range_ends`
 --
-ALTER TABLE `range_ends`
-  ADD CONSTRAINT `range_ends_ibfk_1` FOREIGN KEY (`endID`) REFERENCES `ends` (`endID`),
-  ADD CONSTRAINT `range_ends_ibfk_2` FOREIGN KEY (`rangeID`) REFERENCES `ranges` (`rangeID`);
+ALTER TABLE `individual_range_ends`
+  ADD CONSTRAINT `indiv_range_ends_ibfk_1` FOREIGN KEY (`individualRecordedRangeID`) REFERENCES `individual_round_ranges` (`individualRecordedRangeID`),
+  ADD CONSTRAINT `indiv_range_ends_ibfk_2` FOREIGN KEY (`endID`) REFERENCES `ends` (`endID`),
+  ADD CONSTRAINT `indiv_range_ends_ibfk_3` FOREIGN KEY (`rangeID`) REFERENCES `ranges` (`rangeID`);
 
 --
 -- Constraints for table `round_ranges`
