@@ -397,7 +397,22 @@ CREATE TABLE `individual_range_ends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
+INSERT INTO `individual_range_ends` (`individualRecordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
+(1, 1, 1, 1),
+(2, 2, 1, 2),
+(3, 3, 1, 3),
+(4, 4, 1, 4),
+(5, 5, 1, 5),
+(6, 6, 1, 6),
+(7, 7, 1, 7),
+(8, 8, 1, 8),
+(9, 9, 1, 9),
+(10, 10, 1, 10),
+(11, 11, 1, 11),
+(12, 12, 1, 12),
+(13, 13, 1, 13),
+(14, 14, 1, 14),
+(15, 15, 2, 14);
 --
 -- Table structure for table `ranges`
 --
