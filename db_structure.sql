@@ -142,7 +142,6 @@ CREATE TABLE `competitions` (
   `competitionID` int(11) NOT NULL AUTO_INCREMENT,
   `competitionName` varchar(255) NOT NULL,
   `dateCompleted` date NOT NULL,
-  `archeryClub` varchar(255) DEFAULT NULL,
   `roundID` int(11) NOT NULL,
   `classID` varchar(10) NOT NULL,
   `championshipID` int(11) DEFAULT NULL,
@@ -156,38 +155,38 @@ CREATE TABLE `competitions` (
 -- Dumping data for table `competitions`
 --
 TRUNCATE TABLE `competitions`;
-INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`, `championshipID`) VALUES
+INSERT INTO `competitions` (`competitionName`, `dateCompleted`,`roundID`, `classID`, `championshipID`) VALUES
 -- ChampionshipID 1 (2023)
-('WA90 Open Championship', '2023-01-05', 'Melbourne Archery Club', 1, 'MOPEN', 1),
-('WA70 Open Championship', '2023-01-12', 'Melbourne Archery Club', 2, 'FOPEN', 1),
-('WA60 Invitational', '2023-01-20', 'Melbourne Archery Club', 3, 'MU21', 1),
+('WA90 Open Championship', '2023-01-05',1, 'MOPEN', 1),
+('WA70 Open Championship', '2023-01-12',2, 'FOPEN', 1),
+('WA60 Invitational', '2023-01-20',3, 'MU21', 1),
 
 -- ChampionshipID 2 (2023)
-('AA50 Championship', '2023-02-01', 'Melbourne Archery Club', 4, 'FU21', 2),
-('AA40 Classic', '2023-02-10', 'Melbourne Archery Club', 5, 'M50+', 2),
+('AA50 Championship', '2023-02-01', 4, 'FU21', 2),
+('AA40 Classic', '2023-02-10',5, 'M50+', 2),
 
 -- ChampionshipID 3 (2023)
-('Long Sydney Tournament', '2023-02-25', 'Melbourne Archery Club', 6, 'F50+', 3),
+('Long Sydney Tournament', '2023-02-25', 6, 'F50+', 3),
 
 -- ChampionshipID 4 (2024)
-('Sydney Open', '2024-03-05', 'Melbourne Archery Club', 7, 'M60+', 4),
-('Long Brisbane Challenge', '2024-03-20', 'Melbourne Archery Club', 8, 'F60+', 4),
+('Sydney Open', '2024-03-05', 7, 'M60+', 4),
+('Long Brisbane Challenge', '2024-03-20', 8, 'F60+', 4),
 
 -- ChampionshipID 5 (2024)
-('Brisbane Ranking Event', '2024-04-01', 'Melbourne Archery Club', 9, 'M70+', 5),
-('Adelaide Cup', '2024-04-15', 'Melbourne Archery Club', 10, 'F70+', 5),
+('Brisbane Ranking Event', '2024-04-01', 9, 'M70+', 5),
+('Adelaide Cup', '2024-04-15', 10, 'F70+', 5),
 
 -- ChampionshipID 6 (2024)
-('Short Adelaide Shoot', '2024-05-01', 'Melbourne Archery Club', 11, 'MU18', 6),
+('Short Adelaide Shoot', '2024-05-01', 11, 'MU18', 6),
 
 -- ChampionshipID 7 (2024)
-('Hobart Junior Event', '2024-05-20', 'Melbourne Archery Club', 12, 'FU18', 7),
+('Hobart Junior Event', '2024-05-20', 12, 'FU18', 7),
 
 -- ChampionshipID 8 (2024)
-('Perth Championship', '2024-06-05', 'Melbourne Archery Club', 13, 'MU16', 8),
+('Perth Championship', '2024-06-05',13, 'MU16', 8),
 
 -- No championship (NULL)
-('Darwin Classic', '2024-07-15', 'Darwin Archery Club', 1, 'MOPEN', NULL);
+('Darwin Classic', '2024-07-15', 1, 'MOPEN', NULL);
 
 -- --------------------------------------------------------
 
