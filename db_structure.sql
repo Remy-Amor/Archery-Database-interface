@@ -24,6 +24,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `championships`
+--
+
+DROP TABLE IF EXISTS `championships`;
+CREATE TABLE championships (
+    championshipID   INT PRIMARY KEY AUTO_INCREMENT,  -- or SERIAL / IDENTITY depending on DB
+    championshipName VARCHAR(100),
+    championshipYear INT
+);
+
+--
+-- Dumping data for table `championships`
+--
+
+TRUNCATE TABLE `championships`;
+INSERT INTO `championships` (`championshipName`, `championshipYear`) VALUES
+('National Archery Championships', 2023),
+('State Indoor Archery Championship', 2023),
+('Regional Outdoor Target Championship', 2023),
+('Club Field Archery Championship', 2024),
+('Junior Archery National Championship', 2024),
+('Masters Archery Tournament', 2024),
+('3D Archery Championship', 2023),
+('Olympic Round Archery Championship', 2024),
+('Compound Bow National Championship', 2023),
+('Recurve Bow State Championship', 2024),
+('Archery Club League Championship', 2024),
+('Collegiate Archery Championship', 2023),
+('Youth Archery Development Championship', 2024),
+('Para-Archery National Championship', 2023),
+('Traditional Bow Championship', 2024);
+
+--
 -- Table structure for table `archers`
 --
 
@@ -112,31 +145,52 @@ CREATE TABLE `competitions` (
   `archeryClub` varchar(255) DEFAULT NULL,
   `roundID` int(11) NOT NULL,
   `classID` varchar(10) NOT NULL,
+  `championshipID` int(11) DEFAULT NULL,
   PRIMARY KEY (`competitionID`),
   KEY `roundID` (`roundID`),
-  KEY `classID` (`classID`)
+  KEY `classID` (`classID`),
+  CONSTRAINT `competitions_ibfk_championship` FOREIGN KEY (`championshipID`) REFERENCES `championships` (`championshipID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `competitions`
 --
 TRUNCATE TABLE `competitions`;
-INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`) VALUES
-('WA90 Open Championship', '2025-01-05', 'Melbourne Archery Club', 1, 'MOPEN'),
-('WA70 Open Championship', '2025-01-12', 'Melbourne Archery Club', 2, 'FOPEN'),
-('WA60 Invitational', '2025-01-20', 'Melbourne Archery Club', 3, 'MU21'),
-('AA50 Championship', '2025-02-01', 'Melbourne Archery Club', 4, 'FU21'),
-('AA40 Classic', '2025-02-10', 'Melbourne Archery Club', 5, 'M50+'),
-('Long Sydney Tournament', '2025-02-25', 'Melbourne Archery Club', 6, 'F50+'),
-('Sydney Open', '2025-03-05', 'Melbourne Archery Club', 7, 'M60+'),
-('Long Brisbane Challenge', '2025-03-20', 'Melbourne Archery Club', 8, 'F60+'),
-('Brisbane Ranking Event', '2025-04-01', 'Melbourne Archery Club', 9, 'M70+'),
-('Adelaide Cup', '2025-04-15', 'Melbourne Archery Club', 10, 'F70+'),
-('Short Adelaide Shoot', '2025-05-01', 'Melbourne Archery Club', 11, 'MU18'),
-('Hobart Junior Event', '2025-05-20', 'Melbourne Archery Club', 12, 'FU18'),
-('Perth Championship', '2025-06-05', 'Melbourne Archery Club', 13, 'MU16');
+INSERT INTO `competitions` (`competitionName`, `dateCompleted`, `archeryClub`, `roundID`, `classID`, `championshipID`) VALUES
+-- ChampionshipID 1 (2023)
+('WA90 Open Championship', '2023-01-05', 'Melbourne Archery Club', 1, 'MOPEN', 1),
+('WA70 Open Championship', '2023-01-12', 'Melbourne Archery Club', 2, 'FOPEN', 1),
+('WA60 Invitational', '2023-01-20', 'Melbourne Archery Club', 3, 'MU21', 1),
+
+-- ChampionshipID 2 (2023)
+('AA50 Championship', '2023-02-01', 'Melbourne Archery Club', 4, 'FU21', 2),
+('AA40 Classic', '2023-02-10', 'Melbourne Archery Club', 5, 'M50+', 2),
+
+-- ChampionshipID 3 (2023)
+('Long Sydney Tournament', '2023-02-25', 'Melbourne Archery Club', 6, 'F50+', 3),
+
+-- ChampionshipID 4 (2024)
+('Sydney Open', '2024-03-05', 'Melbourne Archery Club', 7, 'M60+', 4),
+('Long Brisbane Challenge', '2024-03-20', 'Melbourne Archery Club', 8, 'F60+', 4),
+
+-- ChampionshipID 5 (2024)
+('Brisbane Ranking Event', '2024-04-01', 'Melbourne Archery Club', 9, 'M70+', 5),
+('Adelaide Cup', '2024-04-15', 'Melbourne Archery Club', 10, 'F70+', 5),
+
+-- ChampionshipID 6 (2024)
+('Short Adelaide Shoot', '2024-05-01', 'Melbourne Archery Club', 11, 'MU18', 6),
+
+-- ChampionshipID 7 (2024)
+('Hobart Junior Event', '2024-05-20', 'Melbourne Archery Club', 12, 'FU18', 7),
+
+-- ChampionshipID 8 (2024)
+('Perth Championship', '2024-06-05', 'Melbourne Archery Club', 13, 'MU16', 8),
+
+-- No championship (NULL)
+('Darwin Classic', '2024-07-15', 'Darwin Archery Club', 1, 'MOPEN', NULL);
 
 -- --------------------------------------------------------
+
 
 --
 -- Table structure for table `competitions_entry`
@@ -240,18 +294,24 @@ INSERT INTO `competition_range_ends` (`competitionRecordedRangeID`, `endID`, `en
 (1, 1, 1, 1),
 (1, 2, 2, 1),
 (1, 3, 3, 1),
-(1, 4, 4, 1),
-(1, 5, 5, 1),
-(1, 6, 6, 1),
-(2, 7, 1, 2),
-(2, 8, 2, 2),
-(2, 9, 3, 2),
 (2, 10, 4, 2),
 (2, 11, 5, 2),
 (2, 12, 6, 2),
 (3, 13, 1, 3),
 (3, 14, 2, 3),
-(3, 15, 3, 3);
+(3, 15, 3, 3),
+(4, 1, 1, 4),
+(4, 2, 2, 4),
+(4, 3, 3, 4),
+(5, 4, 1, 5),
+(5, 5, 2, 5),
+(5, 6, 3, 5),
+(6, 7, 1, 6),
+(6, 8, 2, 6),
+(6, 9, 3, 6),
+(7, 10, 1, 7),
+(7, 11, 2, 7),
+(7, 12, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -350,6 +410,28 @@ CREATE TABLE `individual_round_ranges` (
   KEY `recordedRoundID` (`recordedRoundID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `individual_round_ranges`
+--
+
+TRUNCATE TABLE `individual_round_ranges`;
+INSERT INTO `individual_round_ranges` (`recordedRoundID`, `rangePositionNumber`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -369,7 +451,39 @@ CREATE TABLE `individual_range_ends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+/*INSERT INTO `individual_range_ends` (`individualRecordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
+(1, 1, 1, 1),
+(2, 2, 1, 2),
+(3, 3, 1, 3),
+(4, 4, 1, 4),
+(5, 5, 1, 5),
+(6, 6, 1, 6),
+(7, 7, 1, 7),
+(8, 8, 1, 8),
+(9, 9, 1, 9),
+(10, 10, 1, 10),
+(11, 11, 1, 11),
+(12, 12, 1, 12),
+(13, 13, 1, 13),
+(14, 14, 1, 14),
+(15, 15, 2, 14);*/
 
+INSERT INTO `individual_range_ends` (`individualRecordedRangeID`, `endID`, `endPositionNumber`, `rangeID`) VALUES
+(1, 1, 1, 7),
+(2, 2, 1, 6),
+(3, 3, 1, 5),
+(4, 4, 1, 4),
+(5, 5, 1, 3),
+(6, 6, 1, 7),
+(7, 7, 1, 6),
+(8, 8, 1, 5),
+(9, 9, 1, 4),
+(10, 10, 1, 3),
+(11, 11, 1, 2),
+(12, 12, 1, 1),
+(13, 13, 1, 2),
+(14, 14, 1, 1),
+(15, 15, 1, 3);
 --
 -- Table structure for table `ranges`
 --
@@ -487,7 +601,10 @@ INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
 (11, 5, 3),
 (12, 7, 1),
 (12, 6, 2),
-(12, 5, 3);
+(12, 5, 3),
+(13, 7, 1),
+(13, 6, 2),
+(13, 5, 3);
 
 --
 -- Constraints for dumped tables
