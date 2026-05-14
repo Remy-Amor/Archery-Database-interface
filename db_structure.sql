@@ -10,6 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET FOREIGN_KEY_CHECKS = 0;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -229,7 +230,13 @@ INSERT INTO `competitions_entry` (`archerID`, `competitionID`, `totalScore`, `st
 ('AA012', 12, 710, 'Approved', 'Great performance'),
 ('AA013', 13, 880, 'Approved', 'Strong finish'),
 ('AA014', 1, 1290, 'Approved', 'Consistant'),
-('AA015', 2, 1265, 'Approved', 'Stong finish');
+('AA015', 2, 1265, 'Approved', 'Stong finish'),
+-- Additional approved entries for competition comparison and leaderboard queries
+('AA004', 1, 1315, 'Approved', 'Additional comparison score'),
+('AA007', 1, 1275, 'Approved', 'Additional comparison score'),
+('AA008', 1, 1365, 'Approved', 'Additional comparison score'),
+('AA012', 1, 1305, 'Approved', 'Additional comparison score'),
+('AA015', 1, 1240, 'Approved', 'Additional comparison score');
 
 -- --------------------------------------------------------
 
@@ -604,6 +611,8 @@ INSERT INTO `round_ranges` (`roundID`, `rangeID`, `rangeSequence`) VALUES
 (13, 7, 1),
 (13, 6, 2),
 (13, 5, 3);
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 --
 -- Constraints for dumped tables
