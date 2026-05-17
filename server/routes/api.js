@@ -6,4 +6,4 @@ import * as controller from '../controllers/dataController.js';
 
 router.get('/archers',controller.getAllArchers);
 
-export default router;
+export default router;  
