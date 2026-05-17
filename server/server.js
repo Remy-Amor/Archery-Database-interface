@@ -1,9 +1,19 @@
+
+
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // getting relative directory path to work
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-import 'dotenv/config';
+
+// Debug: log what's being read
+console.log('DB Config:', {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD ? '***' : 'NOT SET',
+  database: process.env.DB_NAME,
+});
 
 import router from './routes/api.js';
 
