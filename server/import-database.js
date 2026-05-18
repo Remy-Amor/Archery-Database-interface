@@ -37,24 +37,33 @@ async function importDatabase() {
     console.log(`✅ Now using database: ${dbName}`);
 
     // 3. Read and execute your SQL file
-    const sqlFilePath = join(__dirname, 'db_structure.sql');
+    const sqlStructurePath = join(__dirname, 'db_structure.sql');
+    const sqlQueriesPath = join(__dirname, 'db_queries.sql');
     
-    if (!existsSync(sqlFilePath)) {
-      throw new Error(`SQL file not found: ${sqlFilePath}`);
+    if (!existsSync(sqlStructurePath)) {
+      throw new Error(`SQL file not found: ${sqlStructurePath}`);
+    }
+
+    if (!existsSync(sqlQueriesPath)) {
+      throw new Error(`SQL file not found: ${sqlQueriesPath}`);
     }
     
-    const sqlContent = readFileSync(sqlFilePath, 'utf8');
-    console.log(`📄 Read SQL file: ${sqlFilePath}`);
-    console.log(`📏 File size: ${(sqlContent.length / 1024).toFixed(2)} KB`);
+    const sqlStructureContent = readFileSync(sqlStructurePath, 'utf8');
+    const sqlQueriesContent = readFileSync(sqlQueriesPath, 'utf8');
+    console.log(`📄 Read SQL file: ${sqlStructurePath}`);
+    console.log(`📏 File size: ${(sqlStructureContent.length / 1024).toFixed(2)} KB`);
 
     console.log('⚡ Executing SQL...');
-    await connection.query(sqlContent);
+    await connection.query(sqlStructureContent);
+    await connection.query(sqlQueriesContent);
     
     console.log('✅ Database imported successfully!');
 
     // 4. Verify the tables were created
     const [tables] = await connection.query('SHOW TABLES');
+    const archers = await connection.query('SELECT * FROM archers');
     console.log('📋 Tables created:', tables.map(t => Object.values(t)[0]));
+    console.log(archers);
 
   } catch (error) {
     console.error('❌ Import failed:', error.message);

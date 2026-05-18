@@ -12,7 +12,7 @@ export const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
     ssl: {
-    rejectUnauthorized: false  // Required for SkySQL
+    rejectUnauthorized: false  // Required for MariaDB Cloud
   }
 });
 
