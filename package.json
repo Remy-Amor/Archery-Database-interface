@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express-history-api-fallback": "^2.2.1",
+    "vue-router": "^5.0.7",
+    "vuejs-paginate-next": "^1.0.2"
+  }
+}

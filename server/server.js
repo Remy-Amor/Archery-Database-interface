@@ -6,6 +6,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 // getting relative directory path to work
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// for client side routing history
+import fallback from 'express-history-api-fallback'
 
 // Debug: log what's being read
 console.log('DB Config:', {
@@ -25,6 +27,7 @@ app.use('/api', router);
 
 // Serve the built Vue app from ../client/dist
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(fallback(path.join(__dirname, '../client/dist/index.html')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
