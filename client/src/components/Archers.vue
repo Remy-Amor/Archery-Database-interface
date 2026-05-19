@@ -106,7 +106,7 @@
                     
             //         return true;
             //     });
-            },
+            // },
             // Calculate total number of pages
             pageCount: function() {
                 return Math.ceil(this.archers.length / this.perPage);
@@ -117,6 +117,7 @@
                 const end = start + this.perPage;
                 return this.archers.slice(start, end);
             },
+        },
             watch: {
             // Reset to page 1 whenever filters change
             archers: {
