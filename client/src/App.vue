@@ -1,15 +1,5 @@
 <script setup>
-//   archersList = {};
 
-//   async function getArchers() {
-//   try {
-//     const response = await fetch('/api/archers');
-//     const data = await response.json();
-//     archersList = data;
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// }
 </script>
 
 <template>
@@ -23,6 +13,8 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <router-link class="nav-link" to="/archers">Archers</router-link>
+          <router-link class="nav-link" to="/score-entry">Enter a Score</router-link>
+
         </li>
         
       </ul>

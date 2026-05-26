@@ -5,6 +5,5 @@ import * as controller from '../controllers/dataController.js';
 
 
 router.get('/archers',controller.getAllArchers);
-
-
+router.get('/rounds', controller.getAllRounds);
 export default router;  

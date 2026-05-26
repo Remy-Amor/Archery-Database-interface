@@ -8,3 +8,12 @@ export const getAllArchers = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+export const getAllRounds = async (req, res) => {
+  try {
+    const [rounds] = await pool.query('SELECT * FROM rounds');
+    res.json(rounds);
+  } catch (err){
+    res.status(500).json({error: err.message});
+  }
+}
