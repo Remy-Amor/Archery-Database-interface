@@ -9,14 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // for client side routing history
 import fallback from 'express-history-api-fallback'
 
-// Debug: log what's being read
-console.log('DB Config:', {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD ? '***' : 'NOT SET',
-  database: process.env.DB_NAME,
-});
-
 import router from './routes/api.js';
 
 const app = express();

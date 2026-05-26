@@ -6,17 +6,27 @@
         <div class="row">
             <div class="col-12">
                 <table class="table table-striped">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Archery ID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="archer in paginatedArchers">
-                            <td scope="row">{{ archer.archeryAustraliaID }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Archery ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Default Division</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="archer in paginatedArchers" :key="archer.archeryAustraliaID">
+      <td>{{ archer.archeryAustraliaID }}</td>
+      <td>{{ archer.firstName }}</td>
+      <td>{{ archer.lastName }}</td>
+      <td>{{ formatDate(archer.dateOfBirth) }}</td>
+      <td>{{ archer.gender }}</td>
+      <td>{{ formatDivision(archer.defaultDivision) }}</td>
+    </tr>
+  </tbody>
+</table>
             </div>
             <p v-if="err">
                 {{ err }}
@@ -126,7 +136,29 @@
                 },
                 deep: true
             }
+            },
+        methods: {
+              formatDate(date) {
+                if (!date) return 'N/A'
+                const d = new Date(date)
+                return d.toLocaleDateString('en-AU', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+                })
+            },
+            
+            // Format division codes to full names
+            formatDivision(division) {
+                const divisions = {
+                'B': 'Barebow',
+                'C': 'Compound',
+                'R': 'Recurve',
+                'L': 'Longbow'
+                }
+                return divisions[division] || division
             }
+        }
         }
         
     
