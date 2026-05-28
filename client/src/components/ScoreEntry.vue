@@ -15,7 +15,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <h3 class="card-title text-dark mb-3">
-              <i class="bi bi-bullseye me-2"></i>Choose Round
+              Choose Round
             </h3>
             <select
               v-model="selectedRound"
@@ -36,7 +36,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <h3 class="card-title text-dark mb-3">
-              <i class="bi bi-person me-2"></i>Choose Archer
+              Choose Archer
             </h3>
             <select
               v-model="selectedArcher"
@@ -57,7 +57,7 @@
         <div class="card shadow-sm mb-4">
           <div class="card-body">
             <h3 class="card-title text-dark mb-3">
-              <i class="bi bi-gear me-2"></i>Division Settings
+             Division Settings
             </h3>
             <div class="row align-items-center">
               <div class="col-md-6 mb-3 mb-md-0">
