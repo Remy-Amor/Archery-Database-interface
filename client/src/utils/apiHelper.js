@@ -21,3 +21,16 @@ export async function put(endpoint, data) {
   }
   return response.json();
 }
+
+export async function post(endpoint, data) {
+  const response = await fetch(`${API_BASE}${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ error: 'Unknown error' }));
+    throw new Error(error.error || `HTTP ${response.status}`);
+  }
+  return response.json();
+}
