@@ -17,6 +17,9 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/score-entry">Enter a Score</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/er-diagram">Entity Relationship Diagram of Database</router-link>
+        </li>
       </ul>
       <span class="navbar-text">
         An archery database interface!
