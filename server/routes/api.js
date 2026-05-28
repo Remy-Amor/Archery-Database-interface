@@ -6,4 +6,5 @@ import * as controller from '../controllers/dataController.js';
 
 router.get('/archers',controller.getAllArchers);
 router.get('/rounds', controller.getAllRounds);
+router.put('/archers/:id/set-division', controller.setArcherDivision);
 export default router;  

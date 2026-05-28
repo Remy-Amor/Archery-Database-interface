@@ -13,10 +13,10 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <router-link class="nav-link" to="/archers">Archers</router-link>
-          <router-link class="nav-link" to="/score-entry">Enter a Score</router-link>
-
         </li>
-        
+        <li class="nav-item">
+          <router-link class="nav-link" to="/score-entry">Enter a Score</router-link>
+        </li>
       </ul>
       <span class="navbar-text">
         An archery database interface!
