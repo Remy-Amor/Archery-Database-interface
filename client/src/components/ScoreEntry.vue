@@ -143,31 +143,36 @@
             </div>
 
             <!-- Navigation -->
-            <div class="d-flex justify-content-between align-items-center">
-              <button
-                @click="prevEnd"
-                class="btn btn-outline-secondary btn-lg"
-                :disabled="isFirstEnd"
-              >
-                ← Previous End
-              </button>
-              <span class="fw-bold">End {{ globalEndIndex + 1 }} of {{ totalEnds }}</span>
-              <button
-                v-if="!isLastEnd"
-                @click="nextEnd"
-                class="btn btn-primary btn-lg"
-              >
-                Next End →
-              </button>
-              <button
-                v-else
+            <div class="d-flex flex-column align-items-center mt-4">
+            <paginate
+                v-model="currentPage"
+                :page-count="totalEnds"
+                :page-range="3"
+                :margin-pages="1"
+                :click-handler="() => {}"
+                :prev-text="'← Prev'"
+                :next-text="'Next →'"
+                :container-class="'pagination justify-content-center'"
+                :page-class="'page-item'"
+                :page-link-class="'page-link'"
+                :prev-class="'page-item'"
+                :prev-link-class="'page-link'"
+                :next-class="'page-item'"
+                :next-link-class="'page-link'"
+                :active-class="'active'"
+                :disabled-class="'disabled'"
+            ></paginate>
+
+            <!-- Submit button only on last end -->
+            <button
+                v-if="currentPage === totalEnds"
                 @click="submitScores"
-                class="btn btn-success btn-lg"
+                class="btn btn-success btn-lg mt-3"
                 :disabled="isSubmitting"
-              >
+            >
                 <span v-if="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
                 {{ isSubmitting ? 'Submitting...' : 'Submit Scores' }}
-              </button>
+            </button>
             </div>
 
             <!-- Submission message -->
@@ -184,10 +189,14 @@
 </template>
 
 <script>
+import Paginate from 'vuejs-paginate-next'; 
 import { get, put, post } from '../utils/apiHelper.js';
 
 export default {
   name: 'ScoreEntry',
+  components : {
+    Paginate,
+  },
   data() {
     return {
       rounds: [],
@@ -203,12 +212,12 @@ export default {
       showScoring: false,
       ranges: [],            // fetched from API after selecting round
       endsData: [],          // nested structure: array of ranges, each with an array of end arrays (6 scores)
-      currentGlobalEndIdx: 0,
+      currentPage : 1, // pagination
       isSubmitting: false,
       submitMessage: '',
       submitSuccess: false,
       arrowOptions: [
-        { label: 'M (miss)', value: 'M' },
+        { label: 'M (miss)', value: '0' },
         { label: '1', value: '1' },
         { label: '2', value: '2' },
         { label: '3', value: '3' },
@@ -226,6 +235,9 @@ export default {
   computed: {
     hasDivisionChanged() {
       return this.divisionBeingEdited !== this.originalDivision;
+    },
+    currentGlobalEndIdx() {
+        return this.currentPage - 1;
     },
     // Flatten ends for easy pagination
     flattenedEnds() {
@@ -279,6 +291,17 @@ export default {
       this.showScoring = false;
       this.ranges = [];
       this.endsData = [];
+    }, // pagination:
+    showScoring(newVal) {
+      if (newVal) this.currentPage = 1;
+    },
+    selectedRound() {
+      this.currentPage = 1;
+      this.showScoring = false;
+    },
+    selectedArcher() {
+      this.currentPage = 1;
+      this.showScoring = false;
     }
   },
   async mounted() {
@@ -345,18 +368,6 @@ export default {
         alert('Failed to load round ranges.');
       } finally {
         this.isLoading = false;
-      }
-    },
-    prevEnd() {
-      if (this.currentGlobalEndIdx > 0) {
-        this.currentGlobalEndIdx--;
-        this.submitMessage = '';
-      }
-    },
-    nextEnd() {
-      if (this.currentGlobalEndIdx < this.totalEnds - 1) {
-        this.currentGlobalEndIdx++;
-        this.submitMessage = '';
       }
     },
     async submitScores() {

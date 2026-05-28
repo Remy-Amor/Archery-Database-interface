@@ -75,12 +75,9 @@ export const submitRecordedRound = async (req, res) => {
     let totalScore = 0;
     ends.forEach(rangeGroup => {
       rangeGroup.scores.forEach(end => {
-        // end is an array of 6 strings like ["M","9","X","8","7","6"]
-        // convert to numeric values: M=0, X=10
         end.forEach(val => {
           if (val === 'X' || val === '10') totalScore += 10;
           else if (val !== 'M' && !isNaN(val)) totalScore += parseInt(val);
-          // else M or invalid = 0
         });
       });
     });
@@ -97,20 +94,22 @@ export const submitRecordedRound = async (req, res) => {
     for (const rangeGroup of ends) {
       const { rangeID, rangeSequence, scores } = rangeGroup;
 
-      // Create individual_round_ranges entry
+      // Create individual_round_ranges entry (NO rangeID column here)
       const [rangeResult] = await conn.query(
-        `INSERT INTO individual_round_ranges (recordedRoundID, rangeID, rangePositionNumber)
-         VALUES (?, ?, ?)`,
-        [recordedRoundID, rangeID, rangeSequence]
+        `INSERT INTO individual_round_ranges (recordedRoundID, rangePositionNumber)
+         VALUES (?, ?)`,
+        [recordedRoundID, rangeSequence]
       );
       const individualRecordedRangeID = rangeResult.insertId;
 
       // 3. Process each end in this range
       for (let endIdx = 0; endIdx < scores.length; endIdx++) {
-        const endScores = scores[endIdx];   // array of 6 values
-        // Convert arrow strings to DB format: arrow1..arrow6
+        const endScores = scores[endIdx];
+        
+        // Convert arrow strings to DB format
         const arrows = {};
         let bullseyeCount = 0;
+        
         endScores.forEach((val, arrowIdx) => {
           const colName = `arrow${arrowIdx + 1}`;
           if (val === 'M' || val === 'm') {
@@ -132,7 +131,7 @@ export const submitRecordedRound = async (req, res) => {
         );
         const endID = endResult.insertId;
 
-        // Link end to range
+        // Link end to range - THIS is where rangeID goes
         await conn.query(
           `INSERT INTO individual_range_ends (individualRecordedRangeID, endID, endPositionNumber, rangeID)
            VALUES (?, ?, ?, ?)`,
