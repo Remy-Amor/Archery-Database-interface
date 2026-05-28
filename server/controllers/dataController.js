@@ -85,11 +85,11 @@ export const submitRecordedRound = async (req, res) => {
       });
     });
 
-    const dateTimeCompleted = new Date();
+    const dateCompleted = new Date();
     const [recordedResult] = await conn.query(
-      `INSERT INTO individual_recorded_rounds (archerID, roundID, dateTimeCompleted, totalScore)
+      `INSERT INTO individual_recorded_rounds (archerID, roundID, dateCompleted, totalScore)
        VALUES (?, ?, ?, ?)`,
-      [archerID, roundID, dateTimeCompleted, totalScore]
+      [archerID, roundID, dateCompleted, totalScore]
     );
     const recordedRoundID = recordedResult.insertId;
 

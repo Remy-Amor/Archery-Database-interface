@@ -23,7 +23,7 @@
               @change="onRoundChanged"
             >
               <option :value="null" disabled>-- Select a Round --</option>
-              <option v-for="round in rounds" :key="round.id" :value="round">
+              <option v-for="round in rounds" :key="round.roundID" :value="round">
                 {{ round.roundName }}
               </option>
             </select>
@@ -301,7 +301,7 @@ export default {
       try {
         await put(
           `/archers/${this.selectedArcher.archeryAustraliaID}/set-division`,
-          { defaultDivision: this.divisionBeingEdited }
+          { division: this.divisionBeingEdited }
         );
         this.selectedArcher.defaultDivision = this.divisionBeingEdited;
         this.originalDivision = this.divisionBeingEdited;
@@ -324,7 +324,7 @@ export default {
       if (!this.selectedRound || !this.selectedArcher) return;
       try {
         this.isLoading = true;
-        const ranges = await get(`/rounds/${this.selectedRound.id}/ranges`);
+        const ranges = await get(`/rounds/${this.selectedRound.roundID}/ranges`);
         this.ranges = ranges; // array of {rangeSequence, rangeID, distance, endCount}
         // Build endsData structure
         this.endsData = ranges.map((r, idx) => ({
@@ -365,7 +365,7 @@ export default {
       // Prepare payload
       const payload = {
         archerID: this.selectedArcher.archeryAustraliaID,
-        roundID: this.selectedRound.id,
+        roundID: this.selectedRound.roundID,
         ends: this.endsData.map(range => ({
           rangeID: range.rangeID,
           rangeSequence: range.rangeSequence,
